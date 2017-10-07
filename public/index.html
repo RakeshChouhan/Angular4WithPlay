@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script src="node_modules/systemjs/dist/system.src.js"></script>
+		<script src="node_modules/rxjs/bundles/Rx.js"></script>
+        <script>
+            
+			System.config({
+				packages: {
+					'app': {
+						format: 'cjs',
+						defaultExtension: 'js'
+					}
+				}
+			});
+			System.import('app/bootstrap');
+		</script>
+    </head>
+    <body>
+        <h1>First angular and play framework</h1>
+    </body>
+</html>

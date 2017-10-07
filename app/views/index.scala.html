@@ -1,0 +1,31 @@
+@*
+ * This template takes a single argument, a String containing a
+ * message to display.
+ *@
+@(message: String)
+
+@*
+ * Call the `main` template with two arguments. The first
+ * argument is a `String` with the title of the page, the second
+ * argument is an `Html` object containing the body of the page.
+ *@
+<html>
+    <head>
+        <link href='@routes.Assets.versioned("lib/bootstrap/css/bootstrap.min.css")' rel="stylesheet"/>
+         <script type='text/javascript' src='@routes.Assets.versioned("lib/core-js/client/shim.min.js")'></script>
+        <script type='text/javascript' src='@routes.Assets.versioned("lib/zone.js/dist/zone.js")'></script>
+        <script src='@routes.Assets.versioned("lib/systemjs/dist/system.js")'></script>
+
+        <script type='text/javascript' src='@routes.Assets.versioned("system.config.js")'></script>
+        <script>
+			
+			
+             System.import('assets/app/start.js').catch(function(err){ console.error(err); });
+		//	System.import('app/bootstrap');
+		</script>
+
+    </head>
+    <body>
+		<todo-root></todo-root>
+    </body>
+</html>
