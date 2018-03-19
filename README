@@ -1,21 +1,21 @@
-This is Angular4 and Play sample TODO application
+## This is Angular4 and Play sample TODO application
 =================================
 
-Prerequisite
-=============
+## Prerequisite
+## =============
 1. Java 7 or 8
 2. Node JS latest version.
 3. SBT stable version
 
-How To Configure
-================
+## How To Configure
+## ================
 
-Step1. Install latest version of node JS
+** Step1.** Install latest version of node JS
 
-Step2. Install typescript 
+** Step2. ** Install typescript 
        npm install -g typescript
 
-Step3. Install download sbt stable version.
+** Step3. ** Install download sbt stable version.
 
 Step4. Configure sbt/bin path to the System path variable.
 
