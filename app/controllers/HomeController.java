@@ -1,12 +1,16 @@
 package controllers;
 
-import play.mvc.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import play.libs.Json;
-import java.util.*;
+import dbUtil.ItodoDAO;
+import dbUtil.TodoDAO;
 import models.TodoBean;
-
-import views.html.*;
+import play.db.jpa.Transactional;
+import play.libs.Json;
+import play.mvc.Controller;
+import play.mvc.Result;
+import views.html.index;
 
 /**
  * This controller contains an action to handle HTTP requests
@@ -20,13 +24,31 @@ public class HomeController extends Controller {
      * this method will be called when the application receives a
      * <code>GET</code> request with a path of <code>/</code>.
      */
+	private ItodoDAO todoDAO = new TodoDAO();
     public Result index() {
         return ok(index.render("Your new application is ready."));
     }
 
+    @Transactional
     public Result getTodos(){
-        List<TodoBean> todos=getTodoList();
-        return ok(Json.toJson(todos));
+    	return ok(Json.toJson(todoDAO.findAll()));
+    }
+    
+    @Transactional
+    public Result addTodo() {
+    	TodoBean todo = Json.fromJson(request().body().asJson(), TodoBean.class);
+    	return ok(Json.toJson(String.format("{status:%s}", todoDAO.addTodo(todo))));
+    	
+    }
+    
+    @Transactional
+    public Result markAsComplete(int id, boolean status) {
+    	return ok(Json.toJson(String.format("{status:%s}", todoDAO.markComplete(id, status))));
+    }
+    
+    @Transactional
+    public Result deleteTodo(int id) {
+    	return ok(Json.toJson(String.format("{status:%s}", todoDAO.deleteTodo(id))));
     }
 
     public List<TodoBean> getTodoList(){

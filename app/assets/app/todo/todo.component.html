@@ -1,0 +1,44 @@
+<div class="col-lg-12">
+<div class="col-lg-2">&nbsp;</div>
+<div class="col-lg-8">
+<div class="">
+  <div class="col-lg-12">
+      <div class="panel panel-primary">
+          <div class="panel-heading">TODO App</div>
+          <div class="jumbotron">
+              <div class="head-content">
+                  <form #newTaskForm="ngForm" (ngSubmit)="createTask(newTaskForm)" novalidate>
+                      <div class="input-group">
+                          <input type="text" class=" input-group-addon form-control" name="task" aria-describedby="basic-addon2" #task="ngModel" placeholder="Add your task here" ngModel required/> 
+                          <span class="input-group-addon" id="basic-addon2"><button class="btn btn-success">ADD</button></span>
+                        </div>
+                         <div class="input-group">
+                            <input type="checkbox" [checked]="isCompleted" (click)="filterData('COMPLETED')"/><label>Show completed</label>
+                           
+                        
+                      </div>
+                 </form>
+                  
+              </div>
+              
+          </div>
+          
+          <div class="panel-body"> 
+          	<div id="tasks">
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let todo of todos | filtertask:isCompleted">
+                  <div class="input-group"> 
+                      <input type="checkbox" (click)="markCompleted(todo)" [checked]="todo.completed"/>{{todo.title}}
+
+                  </div>
+                    </li>
+            </ul>
+            </div>
+          </div>
+         
+        </div>
+  </div>
+
+</div></div>
+<div class="col-lg-2">&nbsp;</div>
+</div>

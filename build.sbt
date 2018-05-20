@@ -17,11 +17,17 @@ resolvers ++= Seq(
 // use the webjars npm directory (target/web/node_modules ) for resolution of module imports of angular2/core etc
 resolveFromWebjarsNodeModulesDir := true
 
+// Compile the project before generating Eclipse files, so that generated .scala or .class files for views and routes are present
+EclipseKeys.preTasks := Seq(compile in Compile, compile in Test)
+PlayKeys.externalizeResources := false
+
 libraryDependencies ++= Seq(
   javaJdbc,
   cache,
   javaWs,
-
+  javaJpa,
+  "org.hibernate" % "hibernate-entitymanager" % "5.1.0.Final",
+  "com.h2database" % "h2" % "1.4.192",
   "org.webjars.npm" % "minimatch" % "3.0.0",
   "org.webjars.npm" % "glob" % "7.1.2",
   "org.webjars" %% "webjars-play" % "2.6.1",
@@ -41,4 +47,5 @@ libraryDependencies ++= Seq(
     "org.webjars.npm" % "zone.js" % "0.8.4",
      "org.webjars.npm" % "core-js" % "2.4.1",
     "org.webjars.npm" % "symbol-observable" % "1.0.1"
+	
 )

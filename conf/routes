@@ -4,7 +4,12 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
-GET     /todoList                   controllers.HomeController.getTodos
+
+GET     /api/todos                   controllers.HomeController.getTodos
+POST 	/api/todo					controllers.HomeController.addTodo
+PUT		/api/todo/:id/:status		controllers.HomeController.markAsComplete(id: java.lang.Integer,status:java.lang.Boolean)
+
+DELETE	/api/todo/:id				controllers.HomeController.deleteTodo(id: java.lang.Integer)
 
 
 # An example controller showing how to use dependency injection
